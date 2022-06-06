@@ -19,20 +19,23 @@ let searchField = document.querySelector("input")
 searchButton.addEventListener("click", function (event) {
     let result = searchField.value
     artistUrl = "https://itunes.apple.com/search?term=" + result + "."
-    console.log(artistUrl)
-    // findArtist();
     if (result.includes(" ")) {
-        // replaceSpace()
-        console.log("two worder")
+        replaceSpace()
     } else {
         console.log("one word")
+        findArtist()
     }
 
 })
 
 function replaceSpace() {
-    originalString = result
+    originalString = searchField.value
     newString = originalString.replace(" ", "+")
+    newResult = newString
+    newArtistUrl = "https://itunes.apple.com/search?term=" + newResult + "."
+    console.log(newResult)
+    findArtist2()
+    console.log(newArtistUrl)
 }
 
 function findArtist() {
@@ -48,6 +51,19 @@ function findArtist() {
             buildResults(data.results)
         })
 
+}
+
+function findArtist2() {
+    fetch(newArtistUrl, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    })
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            buildResults(data.results)
+        })
 }
 
 function buildResults(trackArray) {
