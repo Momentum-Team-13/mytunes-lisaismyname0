@@ -7,6 +7,7 @@ const trackDeetBox = document.createElement("div")
 trackDeetBox.classList.add("info")
 
 let artistUrl
+let result
 
 // function searchBar() {
 
@@ -20,8 +21,19 @@ searchButton.addEventListener("click", function (event) {
     artistUrl = "https://itunes.apple.com/search?term=" + result + "."
     console.log(artistUrl)
     // findArtist();
+    if (result.includes(" ")) {
+        // replaceSpace()
+        console.log("two worder")
+    } else {
+        console.log("one word")
+    }
 
 })
+
+function replaceSpace() {
+    originalString = result
+    newString = originalString.replace(" ", "+")
+}
 
 function findArtist() {
     fetch(artistUrl, {
