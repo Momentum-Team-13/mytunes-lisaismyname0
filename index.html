@@ -5,18 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./main.js" defer></script>
+  <link rel="stylesheet" href="./style.css">
   <title>Music Search</title>
 </head>
 
 <body>
-  <div id="nowPlaying"></div>
-  <form>
-    <input type="text">
-  </form>
-  <button type="submit">Search</button>
-  <div id="results">
-    <div class="resultImages"></div>
-  </div>
+  <div id="nowPlaying"> Now Playing</div>
+  <div id="SearchForm">
+    <form action="#">
+      <labelfor>Search for an Artist</labelfor>
+      <input type="text">
+      <input type="submit" value="Submit" id="search">
+    </form>
+    <div id="results">
+      <div id="deet"></div>
+    </div>
   </div>
 </body>
 

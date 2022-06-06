@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: 2px solid black;
+}
+
+
+.track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid black;
+}
+
+#deet {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: 2px solid black;
+    box-sizing: content-box;
+}
+
+.deetBox {
+    border: 2px black solid;
+}
+
+.info {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}

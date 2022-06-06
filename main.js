@@ -1,22 +1,29 @@
-const resultElement = document.getElementById("results");
+const resultElement = document.getElementById("results")
 
-function searchBar() {
+const trackDeet = document.getElementById("deet")
+trackDeet.classList.add("info")
 
-}
+const trackDeetBox = document.createElement("div")
+trackDeetBox.classList.add("info")
 
-let searchButton = document.querySelector("button");
-let jackJohnsonURL = "https://itunes.apple.com/search?term=jack+johnson."
+// function searchBar() {
+
+// }
+
+let searchButton = document.getElementById("search")
+let searchField = document.querySelector("input")
+let artistUrl = "https://itunes.apple.com/search?term=`${result}`."
 
 searchButton.addEventListener("click", function (event) {
+    let result = searchField.value
+    console.log(result)
 
-    console.log("search")
-    findJack();
-
+    findArtist();
 
 })
 
-function findJack() {
-    fetch(jackJohnsonURL, {
+function findArtist() {
+    fetch(artistUrl, {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     })
@@ -25,25 +32,27 @@ function findJack() {
         })
         .then(function (data) {
             console.log("response from api: ", data.results[0])
-            cycleTracks(data.results)
-
+            buildResults(data.results)
         })
 
 }
 
-function cycleTracks(trackArray) {
+function buildResults(trackArray) {
     for (let track of trackArray) {
-        showTrackName(track)
-        showAlbumArt(track)
+        resultElement.appendChild(trackDeet)
+        trackDeet.appendChild(trackDeetBox)
+        showAlbumArt(track);
+        showTrackName(track);
+        showBandName(track);
     }
 }
 
 function showTrackName(track) {
 
-    let nameElement = document.createElement("p")
+    let nameElement = document.createElement("div")
     nameElement.innerText = `${track.trackName}`
     console.log(nameElement.innerText)
-    resultElement.appendChild(nameElement)
+    trackDeetBox.appendChild(nameElement)
 }
 
 function showAlbumArt(track) {
@@ -51,5 +60,11 @@ function showAlbumArt(track) {
     imageElement.src = `${track.artworkUrl60}`;
     imageElement.alt = "artist's album covers"
     imageElement.classList.add("photos")
-    resultElement.appendChild(imageElement)
+    trackDeetBox.appendChild(imageElement)
+}
+
+function showBandName(track) {
+    let bandElement = document.createElement("div")
+    bandElement.innerText = `${track.artistName}`
+    trackDeetBox.appendChild(bandElement)
 }
