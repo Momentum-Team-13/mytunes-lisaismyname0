@@ -6,19 +6,20 @@ trackDeet.classList.add("info")
 const trackDeetBox = document.createElement("div")
 trackDeetBox.classList.add("info")
 
+let artistUrl
+
 // function searchBar() {
 
 // }
 
 let searchButton = document.getElementById("search")
 let searchField = document.querySelector("input")
-let artistUrl = "https://itunes.apple.com/search?term=`${result}`."
 
 searchButton.addEventListener("click", function (event) {
     let result = searchField.value
-    console.log(result)
-
-    findArtist();
+    artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+    console.log(artistUrl)
+    // findArtist();
 
 })
 
