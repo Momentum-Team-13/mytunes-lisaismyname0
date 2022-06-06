@@ -1,4 +1,4 @@
-const resultElement = document.getElementById("log");
+const resultElement = document.getElementById("results");
 
 function searchBar() {
 
@@ -24,7 +24,7 @@ function findJack() {
             return response.json()
         })
         .then(function (data) {
-            console.log("response from api: ", data.results[0].trackName)
+            console.log("response from api: ", data.results[0])
             cycleTracks(data.results)
 
         })
@@ -33,15 +33,23 @@ function findJack() {
 
 function cycleTracks(trackArray) {
     for (let track of trackArray) {
-        showDeets(track)
+        showTrackName(track)
+        showAlbumArt(track)
     }
 }
 
-function showDeets(track) {
+function showTrackName(track) {
 
     let nameElement = document.createElement("p")
     nameElement.innerText = `${track.trackName}`
     console.log(nameElement.innerText)
-    // console.log(Object.keys(data.results))
     resultElement.appendChild(nameElement)
+}
+
+function showAlbumArt(track) {
+    let imageElement = document.createElement("img");
+    imageElement.src = `${track.artworkUrl60}`;
+    imageElement.alt = "artist's album covers"
+    imageElement.classList.add("photos")
+    resultElement.appendChild(imageElement)
 }
