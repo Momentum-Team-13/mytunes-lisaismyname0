@@ -1,3 +1,5 @@
+const resultElement = document.getElementById("log");
+
 function searchBar() {
 
 }
@@ -10,6 +12,7 @@ searchButton.addEventListener("click", function (event) {
     console.log("search")
     findJack();
 
+
 })
 
 function findJack() {
@@ -21,18 +24,24 @@ function findJack() {
             return response.json()
         })
         .then(function (data) {
-            console.log("response from api: ", data.results[0])
-            // when i logged data.results [0,1,2,3,4] different artists showed up... WHY
-            let resultElement = document.getElementById("log");
-            resultElement.innerText = data.results[0]
-            showDeets(data)
+            console.log("response from api: ", data.results[0].trackName)
+            cycleTracks(data.results)
 
-            function showDeets() {
-                let nameElement = document.createElement("p")
-                nameElement.innerText = `${data.results.artistName}`
-                console.log(nameElement.innerText)
-                resultElement.appendChild(nameElement)
-            }
         })
 
+}
+
+function cycleTracks(trackArray) {
+    for (let track of trackArray) {
+        showDeets(track)
+    }
+}
+
+function showDeets(track) {
+
+    let nameElement = document.createElement("p")
+    nameElement.innerText = `${track.trackName}`
+    console.log(nameElement.innerText)
+    // console.log(Object.keys(data.results))
+    resultElement.appendChild(nameElement)
 }
