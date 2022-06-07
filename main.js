@@ -16,16 +16,18 @@ function clearResult(resultDiv) {
 
 searchButton.addEventListener("click", function (event) {
     clearResult()
+    event.preventDefault()
     let result = searchField.value
     searchSpecific(result)
-    console.log(result)
     // check radio button for URL
     if (result >= 0) {
         alert("Search Field Empty");
-    } else if (result.includes(" ")) {
+    } else if (result >= 0) {
         replaceSpace()
     } else {
         console.log("one word")
+        artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+        console.log(artistUrl)
     }
 })
 
@@ -132,7 +134,8 @@ function searchSpecific(searchTerm) {
 
             } else if (event.target.id == "albumTitle") {
                 console.log("searching by Album Title")
-                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=album.`
+                artistUrl = `https://itunes.apple.com.search>?term=${searchTerm}&entity=album.`
+
             } else {
                 artistUrl = "https://itunes.apple.com/search?term=" + result + "."
             }
