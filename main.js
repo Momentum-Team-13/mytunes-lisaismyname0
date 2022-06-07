@@ -8,7 +8,7 @@ let result
 let audioElement
 
 let searchButton = document.getElementById("search")
-let searchField = document.querySelector("input")
+let searchField = document.getElementById("userInput")
 
 function clearResult(resultDiv) {
     document.getElementById("results").innerText = " "
@@ -17,33 +17,26 @@ function clearResult(resultDiv) {
 searchButton.addEventListener("click", function (event) {
     clearResult()
     let result = searchField.value
-    artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+    searchSpecific(result)
+    console.log(result)
+    // check radio button for URL
     if (result >= 0) {
         alert("Search Field Empty");
     } else if (result.includes(" ")) {
         replaceSpace()
     } else {
         console.log("one word")
-        findArtist()
     }
 })
 
 function replaceSpace() {
     originalString = searchField.value
-    newString = originalString.replace(" ", "+")
+    newString = originalString.replaceAll(" ", "+")
     newResult = newString
     newArtistUrl = "https://itunes.apple.com/search?term=" + newResult + "."
-    console.log(newResult)
+    console.log(`${newString}`)
     findArtist2()
-    console.log(newArtistUrl)
-    // if (newResult.includes(" ")) {
-    //     console.log("multiple spaces")
-    //     replaceSpace()
-    // }
-    // else {
-    //     findArtist()
-    // }
-    //^ need to tweak to console log when multiple spacese are in search bar
+    console.log(newArtistUrl);
 }
 
 function findArtist() {
@@ -122,43 +115,26 @@ function showBandName(track) {
 
 //syntax: https://itunes.apple.com/search?parameterkeyvalue
 
-// function searchArtist(track) {
-//     console.log("Search by Artist Name")
-//https://itunes.apple.com/search?term=jack+johnson
-// }
-
-// function searchSong(track) {
-
-//     console.log("Search by Song Title")
-//     if event.target.id == "songName"{
-//         searchUrl = "https://itunes.apple.com.search?term={`${result}}&entity=song"
-//     }
-// }
-
-// "https://itunes.apple.com.search?term={`${result}}&entity=song."
-// function searchAlbum(track) {
-//     console.log("Search by Album Title")
-// }
-
-//to search for only jack johnson music videos:
-//https://itunes.apple.com/search?term=jack+johnson&entity=musicVideo.
-
 let radioButtons = document.getElementsByClassName("radio")
 
-searchSpecific()
-
-function searchSpecific() {
+function searchSpecific(searchTerm) {
     for (let radioBtn of radioButtons) {
         console.log(radioBtn)
         radioBtn.addEventListener("change", function (event) {
             if (event.target.id == "artistName") {
                 console.log("searching by artist name")
-            }
-            if (event.target.id == "songTitle") {
+
+                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=musicArtist.`
+
+            } if (event.target.id == "songTitle") {
                 console.log("searching by song title")
-            }
-            if (event.target.id == "albumTitle") {
+                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=song.`
+
+            } else if (event.target.id == "albumTitle") {
                 console.log("searching by Album Title")
+                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=album.`
+            } else {
+                findArtist()
             }
         })
     }
