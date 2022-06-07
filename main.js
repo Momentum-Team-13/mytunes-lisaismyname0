@@ -18,6 +18,10 @@ let searchField = document.querySelector("input")
 searchButton.addEventListener("click", function (event) {
     let result = searchField.value
     artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+    // if (result = "  ") {
+    //     alert("Search Field Empty");
+    // tried result = null, or result = " ", but result = " " triggers replaceSpace()
+    // }
     if (result.includes(" ")) {
         replaceSpace()
     } else {
@@ -117,3 +121,16 @@ function showBandName(track) {
     bandElement.innerText = `${track.artistName}`
     newElement.appendChild(bandElement)
 }
+
+// radio button attempts
+// function searchArtist(track) {
+//     console.log("Search by Artist Name")
+// }
+
+// function searchSong(track) {
+//     console.log("Search by Song Title")
+// }
+
+// function searchAlbum(track) {
+//     console.log("Search by Album Title")
+// }

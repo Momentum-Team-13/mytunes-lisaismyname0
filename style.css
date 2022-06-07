@@ -6,23 +6,23 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border: 2px solid black;
 }
 
 #deet {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border: 2px solid black;
     box-sizing: border-box;
 }
 
 #deetBox {
-    border: 2px black solid;
+    width: 150px;
 }
 
 #searchform {
     border-bottom: 5px solid black;
+    display: flex;
+    flex-direction: row;
 }
 
 #nowPlaying {
