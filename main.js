@@ -8,14 +8,15 @@ let imageElement
 let result
 let audioElement
 
-// function searchBar() {
-
-// }
-
 let searchButton = document.getElementById("search")
 let searchField = document.querySelector("input")
 
+function clearResult(resultDiv) {
+    document.getElementById("results").innerText = " "
+}
+
 searchButton.addEventListener("click", function (event) {
+    clearResult()
     let result = searchField.value
     artistUrl = "https://itunes.apple.com/search?term=" + result + "."
     // if (result = "  ") {
