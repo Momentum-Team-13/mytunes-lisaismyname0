@@ -1,7 +1,6 @@
 const resultElement = document.getElementById("results")
 
 const trackDeet = document.getElementById("deet")
-trackDeet.classList.add("info")
 
 
 let artistUrl
@@ -76,10 +75,13 @@ function findArtist2() {
 
 function buildResults(trackArray) {
     for (let track of trackArray) {
-        resultElement.appendChild(trackDeet)
+        newElement = document.createElement("div")
+        newElement.appendChild(trackDeet)
+        newElement.id = "deetBox"
         showAlbumArt(track);
         showTrackName(track);
         showBandName(track);
+        resultElement.appendChild(newElement)
     }
 }
 
@@ -88,7 +90,7 @@ function showTrackName(track) {
     let nameElement = document.createElement("p")
     nameElement.innerText = `${track.trackName}`
     console.log(nameElement.innerText)
-    trackDeet.appendChild(nameElement)
+    newElement.appendChild(nameElement)
 }
 
 function showAlbumArt(track) {
@@ -96,7 +98,7 @@ function showAlbumArt(track) {
     imageElement.src = `${track.artworkUrl60}`;
     imageElement.alt = "artist's album covers"
     imageElement.classList.add("photos")
-    trackDeet.appendChild(imageElement)
+    newElement.appendChild(imageElement)
 
     // adding click event listener to album photo
     imageElement.addEventListener("click", function (event) {
@@ -113,5 +115,5 @@ function showAlbumArt(track) {
 function showBandName(track) {
     let bandElement = document.createElement("p")
     bandElement.innerText = `${track.artistName}`
-    trackDeet.appendChild(bandElement)
+    newElement.appendChild(bandElement)
 }
