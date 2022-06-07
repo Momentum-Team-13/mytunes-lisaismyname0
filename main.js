@@ -2,7 +2,6 @@ const resultElement = document.getElementById("results")
 
 const trackDeet = document.getElementById("deet")
 
-
 let artistUrl
 let imageElement
 let result
@@ -120,14 +119,47 @@ function showBandName(track) {
 }
 
 // radio button attempts
+
+//syntax: https://itunes.apple.com/search?parameterkeyvalue
+
 // function searchArtist(track) {
 //     console.log("Search by Artist Name")
+//https://itunes.apple.com/search?term=jack+johnson
 // }
 
 // function searchSong(track) {
+
 //     console.log("Search by Song Title")
+//     if event.target.id == "songName"{
+//         searchUrl = "https://itunes.apple.com.search?term={`${result}}&entity=song"
+//     }
 // }
 
+// "https://itunes.apple.com.search?term={`${result}}&entity=song."
 // function searchAlbum(track) {
 //     console.log("Search by Album Title")
 // }
+
+//to search for only jack johnson music videos:
+//https://itunes.apple.com/search?term=jack+johnson&entity=musicVideo.
+
+let radioButtons = document.getElementsByClassName("radio")
+
+searchSpecific()
+
+function searchSpecific() {
+    for (let radioBtn of radioButtons) {
+        console.log(radioBtn)
+        radioBtn.addEventListener("change", function (event) {
+            if (event.target.id == "artistName") {
+                console.log("searching by artist name")
+            }
+            if (event.target.id == "songTitle") {
+                console.log("searching by song title")
+            }
+            if (event.target.id == "albumTitle") {
+                console.log("searching by Album Title")
+            }
+        })
+    }
+}
