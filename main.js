@@ -126,7 +126,7 @@ function searchSpecific(searchTerm) {
 
                 artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=musicArtist.`
 
-            } if (event.target.id == "songTitle") {
+            } else if (event.target.id == "songTitle") {
                 console.log("searching by song title")
                 artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=song.`
 
@@ -134,7 +134,7 @@ function searchSpecific(searchTerm) {
                 console.log("searching by Album Title")
                 artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=album.`
             } else {
-                findArtist()
+                artistUrl = "https://itunes.apple.com/search?term=" + result + "."
             }
         })
     }
