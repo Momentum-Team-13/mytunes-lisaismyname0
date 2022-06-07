@@ -3,9 +3,6 @@ const resultElement = document.getElementById("results")
 const trackDeet = document.getElementById("deet")
 trackDeet.classList.add("info")
 
-const trackDeetBox = document.createElement("div")
-trackDeetBox.classList.add("info")
-
 let artistUrl
 let result
 
@@ -69,7 +66,6 @@ function findArtist2() {
 function buildResults(trackArray) {
     for (let track of trackArray) {
         resultElement.appendChild(trackDeet)
-        trackDeet.appendChild(trackDeetBox)
         showAlbumArt(track);
         showTrackName(track);
         showBandName(track);
@@ -78,10 +74,10 @@ function buildResults(trackArray) {
 
 function showTrackName(track) {
 
-    let nameElement = document.createElement("div")
+    let nameElement = document.createElement("p")
     nameElement.innerText = `${track.trackName}`
     console.log(nameElement.innerText)
-    trackDeetBox.appendChild(nameElement)
+    trackDeet.appendChild(nameElement)
 }
 
 function showAlbumArt(track) {
@@ -89,11 +85,11 @@ function showAlbumArt(track) {
     imageElement.src = `${track.artworkUrl60}`;
     imageElement.alt = "artist's album covers"
     imageElement.classList.add("photos")
-    trackDeetBox.appendChild(imageElement)
+    trackDeet.appendChild(imageElement)
 }
 
 function showBandName(track) {
-    let bandElement = document.createElement("div")
+    let bandElement = document.createElement("p")
     bandElement.innerText = `${track.artistName}`
-    trackDeetBox.appendChild(bandElement)
+    trackDeet.appendChild(bandElement)
 }
