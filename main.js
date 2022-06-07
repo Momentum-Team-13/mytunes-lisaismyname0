@@ -36,6 +36,14 @@ function replaceSpace() {
     console.log(newResult)
     findArtist2()
     console.log(newArtistUrl)
+    // if (newResult.includes(" ")) {
+    //     console.log("multiple spaces")
+    //     replaceSpace()
+    // }
+    // else {
+    //     findArtist()
+    // }
+    //^ need to tweak to console log when multiple spacese are in search bar
 }
 
 function findArtist() {
