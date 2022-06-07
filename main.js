@@ -19,17 +19,14 @@ searchButton.addEventListener("click", function (event) {
     clearResult()
     let result = searchField.value
     artistUrl = "https://itunes.apple.com/search?term=" + result + "."
-    // if (result = "  ") {
-    //     alert("Search Field Empty");
-    // tried result = null, or result = " ", but result = " " triggers replaceSpace()
-    // }
-    if (result.includes(" ")) {
+    if (result >= 0) {
+        alert("Search Field Empty");
+    } else if (result.includes(" ")) {
         replaceSpace()
     } else {
         console.log("one word")
         findArtist()
     }
-
 })
 
 function replaceSpace() {
@@ -62,7 +59,6 @@ function findArtist() {
             console.log("response from api: ", data.results[0])
             buildResults(data.results)
         })
-
 }
 
 function findArtist2() {
