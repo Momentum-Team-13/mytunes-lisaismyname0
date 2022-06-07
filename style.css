@@ -14,7 +14,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     border: 2px solid black;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 .deetBox {

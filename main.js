@@ -3,8 +3,11 @@ const resultElement = document.getElementById("results")
 const trackDeet = document.getElementById("deet")
 trackDeet.classList.add("info")
 
+
 let artistUrl
+let imageElement
 let result
+let audioElement
 
 // function searchBar() {
 
@@ -86,6 +89,17 @@ function showAlbumArt(track) {
     imageElement.alt = "artist's album covers"
     imageElement.classList.add("photos")
     trackDeet.appendChild(imageElement)
+
+    // adding click event listener to album photo
+    imageElement.addEventListener("click", function (event) {
+        let audioElement = document.querySelector("audio")
+        audioElement.controls = true;
+        audioElement.src = `${track.previewUrl}`;
+        audioElement.type = "audio/mpeg"
+        console.log("image clicked")
+        console.log(audioElement.src)
+    }
+    )
 }
 
 function showBandName(track) {
