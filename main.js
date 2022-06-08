@@ -36,7 +36,7 @@ function replaceSpace() {
     newArtistUrl = "https://itunes.apple.com/search?term=" + newResult + "."
     console.log(`${newString}`)
     findArtist()
-    console.log(newArtistUrl);
+    // console.log(newArtistUrl);
 }
 
 function findArtist() {
@@ -68,7 +68,7 @@ function buildResults(trackArray) {
 function showTrackName(track) {
 
     let nameElement = document.createElement("p")
-    nameElement.innerText = `${track.trackName}`
+    nameElement.innerText = `Track Title: ${track.trackName}`
     console.log(nameElement.innerText)
     newElement.appendChild(nameElement)
 }
@@ -105,7 +105,7 @@ function showBandName(track) {
 let radioButtons = document.getElementsByClassName("radio")
 searchSpecific()
 
-function searchSpecific(searchTerm) {
+function searchSpecific() {
     for (let radioBtn of radioButtons) {
         radioBtn.addEventListener("change", function (event) {
             if (event.target.id == "artistName") {
@@ -113,18 +113,20 @@ function searchSpecific(searchTerm) {
 
                 let searchTerm = result
 
-                newArtistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=musicArtist.`
+                newArtistUrl = `https://itunes.apple.com.search?term=${searchField.value}&entity=musicArtist.`
                 console.log(newArtistUrl)
-                console.log(`${searchTerm}`)
+                console.log(`${searchField.value}`)
 
-            } else if (event.target.id == "songTitle" && event.target.id == "search") {
+            } else if (event.target.id === "songTitle") {
                 console.log("searching by song title")
-                newArtistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=song.`
+                newArtistUrl = `https://itunes.apple.com.search?term=${searchField.value}&entity=song.`
                 console.log(newArtistUrl)
+                console.log(`${searchField.value}`)
 
-            } else if (event.target.id == "albumTitle") {
+            } else if (event.target.id === "albumTitle") {
                 console.log("searching by Album Title")
-                newArtistUrl = `https://itunes.apple.com.search>?term=${searchTerm}&entity=album.`
+                newArtistUrl = `https://itunes.apple.com.search?term=${searchField.value}&entity=album.`
+                console.log(newArtistUrl)
 
             }
             else {
