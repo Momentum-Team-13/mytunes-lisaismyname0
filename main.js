@@ -22,10 +22,8 @@ searchButton.addEventListener("click", function (event) {
     // check radio button for URL
     if (result >= 0) {
         alert("Search Field Empty");
-    } else if (result >= 0) {
-        replaceSpace()
     } else {
-        console.log("one word")
+        replaceSpace()
         artistUrl = "https://itunes.apple.com/search?term=" + result + "."
         console.log(artistUrl)
     }
@@ -37,25 +35,11 @@ function replaceSpace() {
     newResult = newString
     newArtistUrl = "https://itunes.apple.com/search?term=" + newResult + "."
     console.log(`${newString}`)
-    findArtist2()
+    findArtist()
     console.log(newArtistUrl);
 }
 
 function findArtist() {
-    fetch(artistUrl, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-    })
-        .then(function (response) {
-            return response.json()
-        })
-        .then(function (data) {
-            console.log("response from api: ", data.results[0])
-            buildResults(data.results)
-        })
-}
-
-function findArtist2() {
     fetch(newArtistUrl, {
         method: "GET",
         headers: { "Content-Type": "application/json" }
@@ -64,6 +48,7 @@ function findArtist2() {
             return response.json()
         })
         .then(function (data) {
+            console.log("response from api: ", data.results[0])
             buildResults(data.results)
         })
 }
