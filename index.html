@@ -12,31 +12,38 @@
 <body>
   <div id="nowPlaying">
     <figure>
-      <figlabel>Now Playing:</figlabel>
+      <figlabel id="figure">Now Playing:</figlabel>
       <audio controls>Now Playing</audio>
     </figure>
   </div>
   <div id="searchform">
     <br></br>
     <form action="#">
-      <div>
-        <dl>Search by</dl>
-        <dt>
-          <input type="radio" class="radio" id="artistName" name="radioButton" value="Artists Name">
-          <label for="artistName">Artist Name</label>
-        </dt>
-        <dt>
-          <input type="radio" class="radio" id="songTitle" name="radioButton" value="Song Title">
-          <label for="songTitle"> Song Title</label>
-        </dt>
-        <dt>
-          <input type="radio" class="radio" id="albumTitle" name="radioButton" value="Album Title">
-          <label for="albumTitle"> Album Title</label>
-        </dt>
-      </div>
-      <div>
-        <input id="userInput" type="text">
-        <input type="submit" value="Submit" id="search">
+      <div id="inners">
+        <div>
+          <dl>Search by</dl>
+          <dt>
+            <input type="radio" class="radio" id="artistName" name="radioButton" value="Artists Name">
+            <label for="artistName">Artist Name</label>
+          </dt>
+          <dt>
+            <input type="radio" class="radio" id="songTitle" name="radioButton" value="Song Title">
+            <label for="songTitle"> Song Title</label>
+          </dt>
+          <dt>
+            <input type="radio" class="radio" id="albumTitle" name="radioButton" value="Album Title">
+            <label for="albumTitle"> Album Title</label>
+          </dt>
+        </div>
+        <div>
+          <br>
+          <br>
+          <br>
+          <p>
+            <input id="userInput" type="text">
+            <input type="submit" value="Submit" id="search">
+          </p>
+        </div>
       </div>
     </form>
   </div>

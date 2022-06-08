@@ -49,7 +49,11 @@ function findArtist() {
         })
         .then(function (data) {
             console.log("response from api: ", data.results[0])
-            buildResults(data.results)
+            if (data.results[0] === undefined) {
+                alert("No Results Found")
+            } else {
+                buildResults(data.results)
+            }
         })
 }
 
@@ -57,10 +61,11 @@ function buildResults(trackArray) {
     for (let track of trackArray) {
         newElement = document.createElement("div")
         newElement.appendChild(trackDeet)
-        newElement.id = "deetBox"
+        newElement.classList.add("deetBox")
         showAlbumArt(track);
         showTrackName(track);
         showBandName(track);
+        showAlbumTitle(track);
         resultElement.appendChild(newElement)
     }
 }
@@ -68,8 +73,7 @@ function buildResults(trackArray) {
 function showTrackName(track) {
 
     let nameElement = document.createElement("p")
-    nameElement.innerText = `Track Title: ${track.trackName}`
-    console.log(nameElement.innerText)
+    nameElement.innerText = `Track Name: ${track.trackName}`
     newElement.appendChild(nameElement)
 }
 
@@ -94,8 +98,14 @@ function showAlbumArt(track) {
 
 function showBandName(track) {
     let bandElement = document.createElement("p")
-    bandElement.innerText = `${track.artistName}`
+    bandElement.innerText = `Artist Name: ${track.artistName}`
     newElement.appendChild(bandElement)
+}
+
+function showAlbumTitle(track) {
+    let albumElement = document.createElement("p")
+    albumElement.innerText = `Album Title: ${track.collectionName}`
+    newElement.appendChild(albumElement)
 }
 
 // radio button attempts

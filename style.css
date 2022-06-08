@@ -1,4 +1,5 @@
 * {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
 }
 
@@ -6,6 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    background-color: rgba(127, 255, 212, 0.276);
 }
 
 #deet {
@@ -15,16 +17,31 @@
     box-sizing: border-box;
 }
 
-#deetBox {
+.deetBox {
     width: 150px;
+    border: 2 px solid black;
+    border-radius: 50%;
+}
+
+#inners {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px;
 }
 
 #searchform {
-    border-bottom: 5px solid black;
+    background-color: rgba(131, 214, 246, 0.249);
+    border-bottom: 5px solid rgba(40, 80, 104, 0.771);
     display: flex;
     flex-direction: row;
 }
 
 #nowPlaying {
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid rgb(19, 37, 32);
+    background-color: rgba(143, 188, 143, 0.425);
+}
+
+#figure {
+    font-size: 30px;
 }
