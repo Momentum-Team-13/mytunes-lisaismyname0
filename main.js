@@ -24,7 +24,7 @@ searchButton.addEventListener("click", function (event) {
         alert("Search Field Empty");
     } else {
         replaceSpace()
-        artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+        // artistUrl = "https://itunes.apple.com/search?term=" + result + "."
         console.log(artistUrl)
     }
 })
@@ -103,26 +103,32 @@ function showBandName(track) {
 //syntax: https://itunes.apple.com/search?parameterkeyvalue
 
 let radioButtons = document.getElementsByClassName("radio")
+searchSpecific()
 
 function searchSpecific(searchTerm) {
     for (let radioBtn of radioButtons) {
-        console.log(radioBtn)
         radioBtn.addEventListener("change", function (event) {
             if (event.target.id == "artistName") {
                 console.log("searching by artist name")
 
-                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=musicArtist.`
+                let searchTerm = result
 
-            } else if (event.target.id == "songTitle") {
+                newArtistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=musicArtist.`
+                console.log(newArtistUrl)
+                console.log(`${searchTerm}`)
+
+            } else if (event.target.id == "songTitle" && event.target.id == "search") {
                 console.log("searching by song title")
-                artistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=song.`
+                newArtistUrl = `https://itunes.apple.com.search?term=${searchTerm}&entity=song.`
+                console.log(newArtistUrl)
 
             } else if (event.target.id == "albumTitle") {
                 console.log("searching by Album Title")
-                artistUrl = `https://itunes.apple.com.search>?term=${searchTerm}&entity=album.`
+                newArtistUrl = `https://itunes.apple.com.search>?term=${searchTerm}&entity=album.`
 
-            } else {
-                artistUrl = "https://itunes.apple.com/search?term=" + result + "."
+            }
+            else {
+                newArtistUrl = "https://itunes.apple.com/search?term=" + result + "."
             }
         })
     }
